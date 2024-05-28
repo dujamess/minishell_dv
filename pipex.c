@@ -73,10 +73,8 @@ int	main(int ac, char **av, char **env)
 	else if (ac > 5)
 	{
 		i = 2;
-			error();
 		int infile = open(av[1], O_RDONLY);
 		int outfile = open(av[ac - 1], O_WRONLY | O_CREAT, 0644);
-		if (infile == -1|| outfile == -1)
 		dup2(infile, STDIN_FILENO);
 		if (ac == 2)
 			execute1(av[1], env,&pipex);
@@ -84,6 +82,7 @@ int	main(int ac, char **av, char **env)
 		{
 			while (i < ac - 2)
 				child_process(av[i++], env,&pipex);
+			dup2(outfile, STDOUT_FILENO);
 			execute1(av[ac - 2], env,&pipex);
 		}
 	}

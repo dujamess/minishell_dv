@@ -20,6 +20,8 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <sys/wait.h>
+#include <string.h>
+
 
 typedef struct pipex
 {
@@ -37,6 +39,15 @@ typedef struct pipex
 	pid_t	e;
 	pid_t	lastpid;
 }	t_pipex;
+
+typedef struct variable
+{
+	char	*OLDPWD;
+	char	*PWD;
+	char	*HOME;
+	char	*SHLVL;
+}	t_variable;
+
 
 void	free_d(char **str);
 int		ft_strlen(char *str);
