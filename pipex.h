@@ -20,7 +20,8 @@
 # include <sys/wait.h>
 # include <sys/types.h>
 # include <sys/wait.h>
-#include <string.h>
+# include <string.h>
+# include <limits.h>
 
 
 typedef struct pipex
@@ -40,16 +41,33 @@ typedef struct pipex
 	pid_t	lastpid;
 }	t_pipex;
 
-typedef struct variable
+typedef struct variable_glob
 {
 	char	*OLDPWD;
 	char	*PWD;
 	char	*HOME;
 	char	*SHLVL;
-}	t_variable;
+}	t_variable_glob;
+
+typedef struct variable
+{
+    char *nom;
+    char *valeur;
+}t_variable;
 
 
+
+char   *my_pwd();
+int    builtin_cd(int ac,char **av,t_variable *my_env);
+t_variable *builtin_env(char **env);
+t_variable split_env(char *env_line);
 void	free_d(char **str);
+char	*ft_strdup(const char *s);
+int	ft_atoi(const char *str);
+int ft_strcmp(char *s1, char *s2);
+int count_env(char **env);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
 int		ft_strlen(char *str);
 char	*ft_strjoin(char *s1, char *s2);
 int		ft_sep_mot(char *str, char sep, int ptr);

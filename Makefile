@@ -1,6 +1,6 @@
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 CC = cc
-SRC = pipex.c fonction_help.c split.c process.c
+SRC = pipex.c fonction_help.c split.c process.c 
 
 OBJECT = $(SRC:.c=.o)
 NAME = pipex
