@@ -14,7 +14,7 @@ t_variable  *check_variable(t_variable *my_env,char *variable)
 }
 int    builtin_cd(int ac,char **av,t_variable *my_env)
 {
-    char *oldpwd = getcwd(NULL, 0);
+    char *oldpwd = getcwd(NULL, 4096);
     char  *pwd;
     t_variable *path;
     t_variable *pwd_env;
@@ -25,7 +25,6 @@ int    builtin_cd(int ac,char **av,t_variable *my_env)
         if(path == NULL)
             printf("variable HOME non trouver dans votre env\n");
         int t = chdir(path->valeur);
-        printf("t : %d\n",t);
         pwd_env= check_variable(my_env,"PWD");
         if (pwd_env)
         {
@@ -46,8 +45,22 @@ int    builtin_cd(int ac,char **av,t_variable *my_env)
     }
     else
     {
-        chdir(av[1]);
-        printf("%s\n",av[1]);
+        if(access(av[1],F_OK) != 0 ||access(av[1],X_OK) != 0 )
+            printf("%s : not directory \n",av[1]);
+        else
+        {
+            chdir(av[1]);
+            pwd = getcwd(NULL, 4096);
+            pwd_env= check_variable(my_env,"PWD");
+            pwd_env->valeur = pwd;
+            pwd_env = check_variable(my_env,"OLDPWD");
+            pwd_env->valeur = oldpwd;
+        }
     }
-
+    // int i = 0;
+    // while (my_env && my_env[i].nom != NULL && my_env[i].valeur != NULL) 
+    // {
+    //     printf("%s=%s\n", my_env[i].nom, my_env[i].valeur);
+    //     i++;
+    // }
 }

@@ -42,10 +42,7 @@ t_variable split_env(char *env_line)
 }
 char   *my_pwd()
 {
-    char *buf;
-    size_t size;
-
-    char *pwd = getcwd(buf,size); 
+    char *pwd = getcwd(NULL,4096); 
     printf("%s\n",pwd);
     return pwd;
 }
@@ -78,9 +75,9 @@ int main(int ac,char **av,char **env)
     int i = 1;
     int t = 0;
     int s = 0;
+    t_variable *my_env = builtin_env(env);
     while(1)
     {
-    t_variable *my_env = builtin_env(env);
     char *line = readline("mini_minishell$ ");
     if (line)
 			add_history(line);
