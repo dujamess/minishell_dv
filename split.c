@@ -89,8 +89,6 @@ char	**ft_split(char *s, char c)
 		if (s[i] != c)
 		{
 			split[j] = ft_locmot(s, &i, c);
-			if ((split[j]) == NULL)
-				free_d(split);
 			j++;
 			if (s[i] == '\0')
 				break ;

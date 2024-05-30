@@ -19,7 +19,7 @@ int    builtin_cd(int ac,char **av,t_variable *my_env)
     t_variable *path;
     t_variable *pwd_env;
     int t;
-    if(ac == 2)
+    if(ac == 1)
     {
         path = check_variable(my_env,"HOME");
         if(path == NULL)
@@ -29,7 +29,7 @@ int    builtin_cd(int ac,char **av,t_variable *my_env)
         pwd_env= check_variable(my_env,"PWD");
         if (pwd_env)
         {
-            pwd = getcwd(NULL, 0);
+            pwd = getcwd(NULL, 4096);
             if (!pwd)
                 return 0;
             free(pwd_env->valeur);
@@ -43,12 +43,11 @@ int    builtin_cd(int ac,char **av,t_variable *my_env)
             free(pwd_env->valeur);
             pwd_env->valeur = oldpwd;
         }
-             int i = 0;
-            while (my_env && my_env[i].nom != NULL && my_env[i].valeur != NULL) 
-            {
-                printf("%s=%s\n", my_env[i].nom, my_env[i].valeur);
-                i++;
-            }
+    }
+    else
+    {
+        chdir(av[1]);
+        printf("%s\n",av[1]);
     }
 
 }

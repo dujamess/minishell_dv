@@ -22,7 +22,8 @@
 # include <sys/wait.h>
 # include <string.h>
 # include <limits.h>
-
+#include <readline/readline.h>
+#include <readline/history.h> 
 
 typedef struct pipex
 {

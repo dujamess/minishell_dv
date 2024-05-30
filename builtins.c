@@ -51,7 +51,7 @@ char   *my_pwd()
 }
 void    my_echo(int ac,char **av,int t)
 {
-    int i = 2;
+    int i = 1;
 
     if (t == 0)
     {
@@ -64,7 +64,7 @@ void    my_echo(int ac,char **av,int t)
     }
     else
     {
-        i = 3;
+        i = 2;
         while (i < ac)
         {
             printf("%s ",av[i]);
@@ -77,13 +77,20 @@ int main(int ac,char **av,char **env)
 {
     int i = 1;
     int t = 0;
-//     
-    t_variable *my_env = builtin_env(env);
-    while(i <= ac - 1)
+    int s = 0;
+    while(1)
     {
-        if (ft_strcmp(av[i], "pwd") == 0)
+    t_variable *my_env = builtin_env(env);
+    char *line = readline("mini_minishell$ ");
+    if (line)
+			add_history(line);
+    char **split = ft_split(line,' ');
+     s = 0;
+     while(split[s])
+        s++;
+        if (ft_strcmp(split[0], "pwd") == 0)
             my_pwd();
-        if (ft_strcmp(av[1], "env") == 0)
+        else if (ft_strcmp(split[0], "env") == 0)
         {
             i = 0;
             while (my_env && my_env[i].nom != NULL && my_env[i].valeur != NULL) 
@@ -92,23 +99,17 @@ int main(int ac,char **av,char **env)
                 i++;
             }
         }
-        if ((ac > 2 && ft_strcmp(av[1], "echo") == 0) && (ft_strcmp(av[2], "-n") != 0))
+        else if ((s >= 1 && ft_strcmp(split[0], "echo") == 0) && (ft_strcmp(split[1], "-n") != 0))
         {
             t = 0;
-            my_echo(ac,av,t);
-            return 0;
+            my_echo(s,split,t);
         }
-        if (( ac > 2 && ft_strcmp(av[1], "echo") == 0) && (ft_strcmp(av[2], "-n") == 0) && av[2]!= NULL)
+        else if (( s >= 1 && ft_strcmp(split[0], "echo") == 0) && (ft_strcmp(split[1], "-n") == 0) && split[2]!= NULL)
         {
             t = 1;
-            my_echo(ac,av,t);
-            return 0;
+            my_echo(s,split,t);
         }
-        if (ft_strcmp(av[1], "cd") == 0)
-        {
-            builtin_cd(ac,av,my_env);
-            return 0;
-        }
-        i++;
+        else if (ft_strcmp(split[0], "cd") == 0)
+            builtin_cd(s,split,my_env);
     }
 }
