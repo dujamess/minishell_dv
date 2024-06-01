@@ -27,49 +27,6 @@ t_variable split_env(char *env_line)
     return var;
 }
 
- t_variable *builtin_env(char **env)
-{
-    int env_count = count_env(env);
-    t_variable *env_vars = (t_variable *)malloc(env_count * sizeof(t_variable));
-
-    int i = 0;
-    while(i < env_count) 
-    {
-        env_vars[i] = split_env(env[i]);
-        i++;
-    }
-    return env_vars;
-}
-char   *my_pwd()
-{
-    char *pwd = getcwd(NULL,4096); 
-    printf("%s\n",pwd);
-    return pwd;
-}
-void    my_echo(int ac,char **av,int t)
-{
-    int i = 1;
-
-    if (t == 0)
-    {
-        while (i < ac)
-        {
-            printf("%s ",av[i]);
-            i++;
-        }
-        printf("\n");
-    }
-    else
-    {
-        i = 2;
-        while (i < ac)
-        {
-            printf("%s ",av[i]);
-            i++;
-        }
-    }
-}
-
 int main(int ac,char **av,char **env)
 {
     int i = 1;
@@ -86,7 +43,7 @@ int main(int ac,char **av,char **env)
      while(split[s])
         s++;
         if (ft_strcmp(split[0], "pwd") == 0)
-            my_pwd();
+           builtin_pwd();
         else if (ft_strcmp(split[0], "env") == 0)
         {
             i = 0;
@@ -99,14 +56,16 @@ int main(int ac,char **av,char **env)
         else if ((s >= 1 && ft_strcmp(split[0], "echo") == 0) && (ft_strcmp(split[1], "-n") != 0))
         {
             t = 0;
-            my_echo(s,split,t);
+             builtin_echo(s,split,t);
         }
         else if (( s >= 1 && ft_strcmp(split[0], "echo") == 0) && (ft_strcmp(split[1], "-n") == 0) && split[2]!= NULL)
         {
             t = 1;
-            my_echo(s,split,t);
+            builtin_echo(s,split,t);
         }
         else if (ft_strcmp(split[0], "cd") == 0)
             builtin_cd(s,split,my_env);
+        else if (ft_strcmp(split[0], "exit") == 0)
+            builtin_exit(split[1]);
     }
 }

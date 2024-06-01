@@ -34,13 +34,7 @@ int ft_strcmp(char *s1, char *s2)
     }
     return *s1 - *s2;
 }
-int count_env(char **env) 
-{
-    int count = 0;
-    while (env[count]) 
-        count++;
-    return count;
-}
+
 char	*ft_strchr(const char *s, int c)
 {
 	int	i;
