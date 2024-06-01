@@ -66,6 +66,6 @@ int main(int ac,char **av,char **env)
         else if (ft_strcmp(split[0], "cd") == 0)
             builtin_cd(s,split,my_env);
         else if (ft_strcmp(split[0], "exit") == 0)
-            builtin_exit(split[1]);
+            builtin_exit(s,split);
     }
 }

@@ -59,7 +59,7 @@ typedef struct variable
 
 
 char   *builtin_pwd();
-void    builtin_exit(char *av);
+void    builtin_exit(int ac,char **av);
 void    builtin_echo(int ac,char **av,int t);
 int    builtin_cd(int ac,char **av,t_variable *my_env);
 t_variable *builtin_env(char **env);
