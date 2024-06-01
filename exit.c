@@ -47,10 +47,6 @@ void    builtin_exit(int ac ,char **av)
         printf("plusieur argument\n");
         exit(2);
     }
-    int i;
-    i = 0;
-    if (i == 0 && av[1][0]== '0' && av[1][1] == '\0')
-        exit(0);
     if (ft_isdigit(av[1]) == 0)
     {
         printf("argument non numeric\n");
