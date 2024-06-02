@@ -1,4 +1,5 @@
 #include "pipex.h"
+
 char	*ft_strjoin(char *s1, char *s2)
 {
 	unsigned int	i;

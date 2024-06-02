@@ -15,8 +15,6 @@ t_variable split_env(char *env_line)
     if (delimiter_pos != NULL) 
     {
         int nom_length = delimiter_pos - env_line;
-         printf("%d\n",delimiter_pos);
-        printf("%d\n",env_line);
         var.nom = (char *)malloc(nom_length + 1);
         ft_strncpy(var.nom, env_line, nom_length);
         var.nom[nom_length] = '\0';
@@ -35,7 +33,7 @@ t_variable *builtin_env(char **env)
     t_variable *env_vars = (t_variable *)malloc(env_count * sizeof(t_variable));
 
     int i = 0;
-    while(i < env_count) 
+    while(i < env_count)
     {
         env_vars[i] = split_env(env[i]);
         i++;
