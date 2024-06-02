@@ -63,7 +63,7 @@ t_variable *builtin_unset(int ac,char **av,t_variable *env)
     unistial_vlag(flag , i);
     int size;
     size = check_size_new_array(av,env,flag);
-    t_variable *new_env = malloc(sizeof(t_variable) * size + 1);
+    t_variable *new_env = malloc(sizeof(t_variable) * size);
     i = 0;
     int j = 0;
     int s = 0;
