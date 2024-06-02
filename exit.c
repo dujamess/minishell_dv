@@ -40,7 +40,7 @@ int	ft_atoi(const char *str)
 
 void    builtin_exit(int ac ,char **av)
 {
-    if (*av == NULL)
+    if (ac == 1)
         exit(0);
     if (ac > 2)
     {

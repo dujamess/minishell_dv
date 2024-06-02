@@ -7,25 +7,6 @@ int ft_strlen(char *str)
         i++;
     return i;
 }
-t_variable split_env(char *env_line) 
-{
-    t_variable var;
-    char *delimiter_pos = ft_strchr(env_line, '=');
-    if (delimiter_pos != NULL) 
-    {
-        int nom_length = delimiter_pos - env_line;
-        var.nom = (char *)malloc(nom_length + 1);
-        ft_strncpy(var.nom, env_line, nom_length);
-        var.nom[nom_length] = '\0';
-        var.valeur = strdup(delimiter_pos + 1);
-    } 
-    else 
-    {
-        var.nom = ft_strdup(env_line);
-        var.valeur = NULL;
-    }
-    return var;
-}
 
 int main(int ac,char **av,char **env)
 {
