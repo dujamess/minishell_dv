@@ -29,7 +29,7 @@ int check_size_new_array(char **av,t_variable *env,int *flag)
         }
         i++;
      }
-     return (j - count);
+     return ((j - count) +1);
 }
 void free_env(t_variable *env)
  {
@@ -84,7 +84,7 @@ t_variable *builtin_unset(int ac,char **av,t_variable *env)
         }
         i++;
     }
-    free_env(env);
     new_env[s].valeur = NULL;
+    new_env[s].nom = NULL;
     return new_env;
 }

@@ -30,7 +30,7 @@ t_variable split_env(char *env_line)
 t_variable *builtin_env(char **env)
 {
     int env_count = count_env(env);
-    t_variable *env_vars = (t_variable *)malloc(env_count * sizeof(t_variable));
+    t_variable *env_vars = (t_variable *)malloc((env_count + 1) * sizeof(t_variable));
 
     int i = 0;
     while(i < env_count)
@@ -38,5 +38,7 @@ t_variable *builtin_env(char **env)
         env_vars[i] = split_env(env[i]);
         i++;
     }
+    env_vars[i].nom = NULL;
+    env_vars[i].valeur = NULL;
     return env_vars;
 }
