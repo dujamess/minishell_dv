@@ -58,12 +58,15 @@ typedef struct variable
 
 
 
-char   *builtin_pwd();
-t_variable *builtin_unset(int ac,char **av,t_variable *env);
-void    builtin_exit(int ac,char **av);
-void    builtin_echo(int ac,char **av,int t);
-int    builtin_cd(int ac,char **av,t_variable *my_env);
+char		*builtin_pwd();
+t_variable *builtin_export(char **av,t_variable *env);
+t_variable *builtin_unset(char **av,t_variable *env);
+void    	builtin_exit(int ac,char **av);
+void    	builtin_echo(int ac,char **av,int t);
+int    		builtin_cd(int ac,char **av,t_variable *my_env);
 t_variable *builtin_env(char **env);
+
+
 t_variable split_env(char *env_line);
 void	free_d(char **str);
 char	*ft_strdup(const char *s);

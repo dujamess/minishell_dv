@@ -53,7 +53,7 @@ t_variable update_env(t_variable env_line)
     var.valeur = ft_strdup(env_line.valeur);
     return var;
 }
-t_variable *builtin_unset(int ac,char **av,t_variable *env)
+t_variable *builtin_unset(char **av,t_variable *env)
 {
 
     int i = 0;

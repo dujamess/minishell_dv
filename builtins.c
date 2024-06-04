@@ -49,6 +49,8 @@ int main(int ac,char **av,char **env)
         else if (ft_strcmp(split[0], "exit") == 0)
             builtin_exit(s,split);
         else if(ft_strcmp(split[0],"unset") == 0)
-            my_env = builtin_unset(s,split,my_env);
+            my_env = builtin_unset(split,my_env);
+        else if(ft_strcmp(split[0],"export") == 0)
+            my_env = builtin_export(split,my_env);
     }
 }
