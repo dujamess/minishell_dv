@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef MINISHELL_H
+# define MINISHELL_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -42,13 +42,11 @@ typedef struct pipex
 	pid_t	lastpid;
 }	t_pipex;
 
-typedef struct variable_glob
+typedef struct path
 {
-	char	*OLDPWD;
-	char	*PWD;
-	char	*HOME;
-	char	*SHLVL;
-}	t_variable_glob;
+	char **var_path;
+	char **option;
+}	t_path;
 
 typedef struct variable
 {
@@ -59,14 +57,17 @@ typedef struct variable
 
 
 char		*builtin_pwd();
+void    heredoc(char *av);
+void    augment_level_shlvl(t_variable *env);
 t_variable *builtin_export(char **av,t_variable *env);
 t_variable *builtin_unset(char **av,t_variable *env);
 void    	builtin_exit(int ac,char **av);
 void    	builtin_echo(int ac,char **av);
 int    		builtin_cd(int ac,char **av,t_variable *my_env);
 t_variable *builtin_env(char **env);
-
-
+void    execution_cmd(int ac,char *av,t_variable *env,t_path *path);
+int run_builtins(int s,char **split,t_variable *my_env);
+void    split_path(t_variable  *env,t_path *path);
 t_variable split_env(char *env_line);
 void	free_d(char **str);
 char	*ft_strdup(const char *s);
@@ -81,10 +82,10 @@ int		ft_sep_mot(char *str, char sep, int ptr);
 char	*ft_locmot(char *str, int *ptr, char sep);
 int		ft_countr_mot(char *s, char c);
 char	**ft_split(char *s, char c);
-char	**env_split(char **env, t_pipex *p);
-char	*join_commande_path(char **stock, char *av, t_pipex *pipex);
-void	child_process1(char **av, t_pipex *pipex, char **env);
-void	child_process2(char **av, t_pipex *pipex, char **env, int ac);
-void	wait_process(t_pipex *pipex);
-
+// char	**env_split(char **env, t_pipex *p);
+char	*join_commande_path(t_path *path, char *av);
+// void	child_process1(char **av, t_pipex *pipex, char **env);
+// void	child_process2(char **av, t_pipex *pipex, char **env, int ac);
+// void	wait_process(t_pipex *pipex);
+// void	execute1(char *argv, char **envp,t_pipex *pipex);
 #endif

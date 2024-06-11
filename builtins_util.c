@@ -1,4 +1,4 @@
-#include "pipex.h"
+#include "minishell.h"
 
 char	*ft_strjoin(char *s1, char *s2)
 {

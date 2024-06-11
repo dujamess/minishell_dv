@@ -1,12 +1,14 @@
-#include "pipex.h"
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+#include "minishell.h"
+
+char	*ft_substr(char const *s, int start, int len)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 	char			*str;
 
 	i = 0;
 	j = 0;
+
 	if (!s)
 		return (NULL);
 	if (ft_strlen((char *) s) - start < len)
@@ -62,7 +64,7 @@ int position_egal(char *av)
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
-	unsigned int	i;
+	int	i;
 
 	i = 0;
 	if (n == 0)
@@ -141,6 +143,7 @@ t_variable *builtin_export(char **av, t_variable *env)
             n = position_egal(av[j]);
             if (check_dans_env(av[j], new_env, n)) 
             {
+                printf("-----hh\n");
                 new_env[i].nom = ft_substr(av[j], 0, n);
                 new_env[i].valeur = ft_strdup(av[j] + n + 1);
                 i++;
@@ -150,6 +153,7 @@ t_variable *builtin_export(char **av, t_variable *env)
                 int k = 0;
                 while (new_env[k].nom) 
                 {
+                    printf("-----ss\n");
                     if (ft_strncmp(av[j], new_env[k].nom, n) == 0)
                     {
                         new_env[k].valeur = ft_strdup(av[j] + n + 1);

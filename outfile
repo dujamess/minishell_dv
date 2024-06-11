@@ -1,0 +1,26 @@
+total 424
+drwxr-xr-x  4 khadija khadija   4096 Jun  7 10:15 .
+drwxr-xr-x 11 khadija khadija   4096 Jun  1 10:31 ..
+-rwxr-xr-x  1 khadija khadija  52184 Jun  3 15:50 a.out
+-rw-r--r--  1 khadija khadija   1916 Jun  7 10:15 builtins.c
+-rw-r--r--  1 khadija khadija   1218 Jun  2 05:11 builtins_util.c
+-rw-r--r--  1 khadija khadija   1515 Jun  1 06:07 cd.c
+-rw-r--r--  1 khadija khadija    426 Jun  5 09:15 echo.c
+-rw-r--r--  1 khadija khadija    978 Jun  2 15:00 env.c
+-rw-r--r--  1 khadija khadija    892 Jun  2 05:07 exit.c
+-rw-r--r--  1 khadija khadija   3059 Jun  4 17:57 export.c
+-rw-r--r--  1 khadija khadija   1510 Mar 29 22:59 fonction_help.c
+drwxr-xr-x  8 khadija khadija   4096 Jun  5 09:16 .git
+drwxr-xr-x  2 khadija khadija   4096 May 28 13:56 home
+-rw-r--r--  1 khadija khadija     19 May 26 06:19 infile
+-rw-r--r--  1 khadija khadija    327 May 29 07:40 Makefile
+-rw-r--r--  1 khadija khadija   2111 Jun  7 10:32 minishell.c
+-rwxr-xr-x  1 khadija khadija 165248 Jun  7 10:15 my_program
+-rwxr-xr-x  1 khadija khadija   1459 Jun  7 10:30 outfile
+-rwxr-xr-x  1 khadija khadija 121584 Jun  7 09:55 pipex
+-rw-r--r--  1 khadija khadija   2361 Jun  7 10:07 pipex.c
+-rw-r--r--  1 khadija khadija   2784 Jun  7 10:12 pipex.h
+-rw-r--r--  1 khadija khadija   3314 Jun  7 10:07 process.c
+-rw-r--r--  1 khadija khadija    155 Jun  1 06:09 pwd.c
+-rw-r--r--  1 khadija khadija   1988 May 30 12:30 split.c
+-rw-r--r--  1 khadija khadija   1675 Jun  2 15:12 unset.c

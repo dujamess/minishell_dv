@@ -1,5 +1,4 @@
-#include "pipex.h"
-
+#include "minishell.h"
 
 t_variable  *check_variable(t_variable *my_env,char *variable)
 {
@@ -20,13 +19,17 @@ int    builtin_cd(int ac,char **av,t_variable *my_env)
     char  *pwd;
     t_variable *path;
     t_variable *pwd_env;
-    int t;
     if(ac == 1)
     {
         path = check_variable(my_env,"HOME");
         if(path == NULL)
             printf("variable HOME non trouver dans votre env\n");
         int t = chdir(path->valeur);
+        if (t == -1)
+        {
+            printf("erreur chdir\n");
+            return 0;
+        }
         pwd_env= check_variable(my_env,"PWD");
         if (pwd_env)
         {
@@ -60,4 +63,5 @@ int    builtin_cd(int ac,char **av,t_variable *my_env)
             pwd_env->valeur = oldpwd;
         }
     }
+    return 0;
 }

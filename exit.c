@@ -1,4 +1,4 @@
-#include "pipex.h"
+#include "minishell.h"
 
 int	ft_isdigit(char *c)
 {

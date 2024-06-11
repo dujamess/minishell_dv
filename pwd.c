@@ -1,4 +1,4 @@
-#include "pipex.h"
+#include "minishell.h"
 
 char   *builtin_pwd()
 {

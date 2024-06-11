@@ -1,12 +1,13 @@
 CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 CC = cc
-SRC = pipex.c fonction_help.c split.c process.c 
+SRC = cd.c env.c exit.c fonction_help.c minishell.c \
+	  pwd.c unset.c builtins_util.c echo.c execution.c export.c split.c SHLVL.c here_doc.c
 
 OBJECT = $(SRC:.c=.o)
-NAME = pipex
+NAME = minishell
 all : $(NAME)
 $(NAME) :$(OBJECT)
-	$(CC) $(CFLAGS) $(OBJECT) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJECT) -o $(NAME) -lreadline
 %o : %c
 	$(CC) $(CFLAGS) -c $< -$@
 

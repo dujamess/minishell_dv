@@ -1,4 +1,4 @@
-#include "pipex.h"
+#include "minishell.h"
 
 int count_env(char **env) 
 {
